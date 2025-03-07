@@ -9,14 +9,6 @@ function DashboardPage(): React.JSX.Element {
 	const value2Ref = useRef<HTMLInputElement>(null);
 
 	// Definir las descripciones de los clusters
-	const clusterDescriptions = [
-		"",
-		"",
-		"",
-		"",
-		"",
-	];
-
 	const handleChange = (_: React.ChangeEvent<HTMLInputElement>) => {
 		if (!context) return;
 
@@ -69,7 +61,7 @@ function DashboardPage(): React.JSX.Element {
 							onChange={handleChange}
 						/>
 
-						<button type="submit" className="btn btn-primary">
+						<button type="submit" className="btn btn-primary d-none">
 							Enviar
 						</button>
 					</div>
