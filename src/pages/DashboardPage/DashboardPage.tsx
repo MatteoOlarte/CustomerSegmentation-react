@@ -10,11 +10,11 @@ function DashboardPage(): React.JSX.Element {
 
 	// Definir las descripciones de los clusters
 	const clusterDescriptions = [
-		"Clientes con bajos ingresos y bajo puntaje de gasto.",
-		"Clientes con ingresos medios y puntaje de gasto promedio.",
-		"Clientes con altos ingresos y bajo puntaje de gasto.",
-		"Clientes con ingresos bajos y alto puntaje de gasto.",
-		"Clientes con altos ingresos y alto puntaje de gasto.",
+		"",
+		"",
+		"",
+		"",
+		"",
 	];
 
 	const handleChange = (_: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,22 +79,31 @@ function DashboardPage(): React.JSX.Element {
 
 						{(value !== undefined && (
 							<div>
-								<p className="mb-1">
-									<b>Ingesos Anuales: </b>
-									{`$${value1Ref.current?.value} miles de USD`}
+								<div className="mb-3">
+									<p className="mb-1">
+										<b>Ingesos Anuales: </b>
+										{`$${value1Ref.current?.value} miles de USD`}
+									</p>
+									<p className="mb-1">
+										<b>Puntaje de Gasto: </b>
+										{value2Ref.current?.value}
+									</p>
+									<p className="mb-1">
+										<b>Grupo Asignado: </b>
+										{value + 1}
+									</p>
+								</div>
+
+								<p>
+									<b>¿Que significa el grupo asignado a un cliente?</b>
 								</p>
-								<p className="mb-1">
-									<b>Puntaje de Gasto: </b>
-									{value2Ref.current?.value}
-								</p>
-								<p className="mb-1">
-									<b>Grupo Asignado: </b>
-									{value + 1}
-								</p>
-								<p className="mb-1">
-									<b>Descripción: </b>
-									{clusterDescriptions[value]}
-								</p>
+								<ol className="list-group list-group-numbered">
+									<li className="list-group-item">Clientes con bajos ingresos y bajo puntaje de gasto.</li>
+									<li className="list-group-item">Clientes con ingresos medios y puntaje de gasto promedio.</li>
+									<li className="list-group-item">Clientes con altos ingresos y bajo puntaje de gasto.</li>
+									<li className="list-group-item">Clientes con ingresos bajos y alto puntaje de gasto.</li>
+									<li className="list-group-item">Clientes con altos ingresos y alto puntaje de gasto.</li>
+								</ol>
 							</div>
 						)) || <p>Porfavor ingrese los datos para realizar el calculo del cliente</p>}
 					</div>
