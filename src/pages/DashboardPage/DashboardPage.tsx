@@ -38,7 +38,7 @@ function DashboardPage(): React.JSX.Element {
 
 	return (
 		<div className="m-5">
-			<form onSubmit={handleSubmit} className="p-4 border rounded bg-light mb-4">
+			<form onSubmit={handleSubmit} className="p-4 border rounded bg-black mb-4">
 				<div className="row g-4">
 					<div className="col-6">
 						<h4 className="mb-4">Segmentación de Clientes</h4>
