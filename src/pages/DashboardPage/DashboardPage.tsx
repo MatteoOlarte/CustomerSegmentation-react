@@ -19,11 +19,11 @@ function DashboardPage(): React.JSX.Element {
 
 	const handleChange = (_: React.ChangeEvent<HTMLInputElement>) => {
 		if (!context) return;
-		
+
 		// Obtener los valores actuales de las refs
 		const value1 = Number(value1Ref.current?.value);
 		const value2 = Number(value2Ref.current?.value);
-	
+
 		if (!isNaN(value1) && !isNaN(value2)) {
 			const predicted: number = context.predict(value1, value2);
 			setValue(predicted);
@@ -61,7 +61,7 @@ function DashboardPage(): React.JSX.Element {
 						/>
 
 						<InputField
-							label="Puntuación de Compra"
+							label="Puntaje de Gasto"
 							id="input-2"
 							type="text"
 							placeholder="Ingrese el segundo valor"
@@ -77,7 +77,7 @@ function DashboardPage(): React.JSX.Element {
 					<div className="col-6">
 						<h4 className="mb-4">Resultados</h4>
 
-						{value !== undefined && (
+						{(value !== undefined && (
 							<div>
 								<p className="mb-1">
 									<b>Ingesos Anuales: </b>
@@ -96,7 +96,7 @@ function DashboardPage(): React.JSX.Element {
 									{clusterDescriptions[value]}
 								</p>
 							</div>
-						)}
+						)) || <p>Porfavor ingrese los datos para realizar el calculo del cliente</p>}
 					</div>
 				</div>
 			</form>

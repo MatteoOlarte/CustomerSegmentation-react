@@ -1,6 +1,5 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { modelPredict } from "../utils/models";
-
 
 interface IDashboardContexType {
 	predict: (x: number, y: number) => number;
