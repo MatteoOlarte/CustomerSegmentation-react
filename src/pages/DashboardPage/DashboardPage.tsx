@@ -82,7 +82,7 @@ function DashboardPage(): React.JSX.Element {
 					<div className="col-lg-6">
 						<h4 className="mb-4">Resultados</h4>
 
-						{(value && (
+						{(value !== undefined && (
 							<div>
 								<div className="mb-3">
 									<p className="mb-1">
