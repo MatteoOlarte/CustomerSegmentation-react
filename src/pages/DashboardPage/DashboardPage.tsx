@@ -1,6 +1,10 @@
 import React, { useState, useContext, useRef } from "react";
+import { Scatter } from "react-chartjs-2";
+import { Chart as ChartJS, LinearScale, PointElement, LineElement, Tooltip, Legend } from "chart.js";
+import { DashboardContex, IDashboardContexType } from "../../context/DashboardContex";
 import InputField from "../../components/InputField";
-import { DashboardContex } from "../../context/DashboardContex";
+
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 function DashboardPage(): React.JSX.Element {
 	const context = useContext(DashboardContex);
@@ -8,7 +12,7 @@ function DashboardPage(): React.JSX.Element {
 	const value1Ref = useRef<HTMLInputElement>(null);
 	const value2Ref = useRef<HTMLInputElement>(null);
 
-	// Definir las descripciones de los clusters
+	// Definir las descripciones de los clusters*
 	const handleChange = (_: React.ChangeEvent<HTMLInputElement>) => {
 		if (!context) return;
 
@@ -22,25 +26,11 @@ function DashboardPage(): React.JSX.Element {
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-
-		if (!context) return;
-
-		let value1 = Number(value1Ref.current?.value);
-		let value2 = Number(value2Ref.current?.value);
-
-		if (!isNaN(value1) && !isNaN(value2)) {
-			let predicted = context.predict(value1, value2);
-			setValue(predicted);
-		}
-	};
-
 	return (
 		<div className="m-5">
-			<form onSubmit={handleSubmit} className="p-4 border rounded bg-black mb-4">
+			<form className="p-4 border rounded bg-black mb-4">
 				<div className="row g-4">
-					<div className="col-6">
+					<div className="col-lg-6">
 						<h4 className="mb-4">Segmentación de Clientes</h4>
 
 						<InputField
@@ -62,14 +52,14 @@ function DashboardPage(): React.JSX.Element {
 						/>
 
 						<button type="submit" className="btn btn-primary d-none">
-							Enviar
+							Calcular
 						</button>
 					</div>
 
-					<div className="col-6">
+					<div className="col-lg-6">
 						<h4 className="mb-4">Resultados</h4>
 
-						{(value !== undefined && (
+						{(value && (
 							<div>
 								<div className="mb-3">
 									<p className="mb-1">
@@ -101,8 +91,29 @@ function DashboardPage(): React.JSX.Element {
 					</div>
 				</div>
 			</form>
+
+			{context && (
+				<div className="p-4 border rounded bg-black mb-4">
+					<h4>Grafico de Distribución</h4>
+					<ScatterChart context={ context } />
+				</div>
+			)}
 		</div>
 	);
 }
 
+function ScatterChart({ context }: { context: IDashboardContexType }) {
+	const options = {
+		scales: {
+			y: {
+				beginAtZero: true,
+			},
+			x: {
+				beginAtZero: true,
+			},
+		},
+	};
+
+	return <Scatter data={{ datasets: context.datasets }} options={options} />;
+}
 export default DashboardPage;
