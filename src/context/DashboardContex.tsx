@@ -11,6 +11,7 @@ export const DashboardContex = createContext<IDashboardContexType | null>(null);
 
 export const DashboardContexProvider = ({ children }: React.PropsWithChildren) => {
 	const [datasets, setDatasets] = useState<ScatterDataset[]>([]);
+
 	const predict = (x: number, y: number) => {
 		return modelPredict(x, y);
 	};
@@ -21,31 +22,31 @@ export const DashboardContexProvider = ({ children }: React.PropsWithChildren) =
 		}
 
 		const loadData = async () => {
-			const cluster1: ScatterDataset = {
+			let cluster1: ScatterDataset = {
 				label: "Cluster 1",
 				backgroundColor: "rgba(255, 99, 132, 1)",
 				data: await fromJSON("CustomerSegmentation-react/data/clusters_0.json")
 			};
 
-			const cluster2: ScatterDataset = {
+			let cluster2: ScatterDataset = {
 				label: "Cluster 2",
 				backgroundColor: "rgb(99, 120, 255)",
 				data: await fromJSON("CustomerSegmentation-react/data/clusters_1.json")
 			};
 
-			const cluster3: ScatterDataset = {
+			let cluster3: ScatterDataset = {
 				label: "Cluster 3",
 				backgroundColor: "rgb(128, 255, 99)",
 				data: await fromJSON("CustomerSegmentation-react/data/clusters_2.json")
 			};
 
-			const cluster4: ScatterDataset = {
+			let cluster4: ScatterDataset = {
 				label: "Cluster 4",
 				backgroundColor: "rgb(255, 148, 99)",
 				data: await fromJSON("CustomerSegmentation-react/data/clusters_3.json")
 			};
 
-			const cluster5: ScatterDataset = {
+			let cluster5: ScatterDataset = {
 				label: "Cluster 5",
 				backgroundColor: "rgb(99, 255, 224)",
 				data: await fromJSON("CustomerSegmentation-react/data/clusters_4.json")

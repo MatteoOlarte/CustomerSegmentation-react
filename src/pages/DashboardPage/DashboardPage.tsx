@@ -107,9 +107,23 @@ function ScatterChart({ context }: { context: IDashboardContexType }) {
 		scales: {
 			y: {
 				beginAtZero: true,
+				ticks: {
+					color: "white", // Color de los números del eje Y
+				},
+				grid: {
+					color: "rgba(200, 200, 200, 0.3)", // Color de las líneas del grid
+					borderColor: "gray", // Color del borde
+				},
 			},
 			x: {
 				beginAtZero: true,
+				ticks: {
+					color: "white", // Color de los números del eje Y
+				},
+				grid: {
+					color: "rgba(200, 200, 200, 0.3)", // Color de las líneas del grid
+					borderColor: "gray", // Color del borde
+				},
 			},
 		},
 	};
