@@ -105,7 +105,7 @@ function DashboardPage(): React.JSX.Element {
 										<span>
 											<b>Grupo asignado:</b>
 										</span>
-										<p>{value}</p>
+										<p>{value + 1}</p>
 									</div>
 								</div>
 
